@@ -33,9 +33,6 @@ class App extends Component {
               </Button>
             </Toolbar>
           </AppBar>
-          <Route exact path="/">
-            <Redirect to="/experiments"/>
-          </Route>
           <Route path="/experiments" component={Experiments}/>
           <Route path="/transformers" component={Transformers}/>
         </div>
