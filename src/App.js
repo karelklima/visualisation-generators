@@ -15,8 +15,6 @@ import {
 import Experiments from './Experiments';
 import Transformers from './Transformers';
 
-import './App.css';
-
 class App extends Component {
   render() {
     return (
