@@ -13,7 +13,10 @@ import getTransformerMarkup from './getTransformerMarkup';
 
 const transformerDefaults = {
   id: 'dce-to-dcterms-title',
-  title: 'Dublin Core elements title to Dublin Core terms title',
+  inputVocabulary: 'Dublin Core elements',
+  inputPredicate: 'title',
+  outputVocabulary: 'Dublin Core terms',
+  outputPredicate: 'title',
   query: `PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX dce: <http://purl.org/dc/elements/1.1/>
 PREFIX dct: <http://purl.org/dc/terms/>
@@ -33,9 +36,7 @@ PREFIX time: <http://www.w3.org/2006/time#>
 
 ASK {
   ?s dct:issued ?dateTime .
-}`,
-  inputTitle: 'Triples with Dublin Core elements title predicate',
-  outputTitle: 'Representation of objects of the input triples expressed as Dublin Core terms triples'
+}`
 }
 
 class Transformers extends Component {
@@ -76,9 +77,33 @@ class Transformers extends Component {
           /><br/><br/>
           <TextField
             id="name"
-            label="Title"
-            value={this.state.title}
-            onChange={(e) => this.update({ title: e.target.value })}
+            label="Input vocabulary"
+            value={this.state.inputVocabulary}
+            onChange={(e) => this.update({ inputVocabulary: e.target.value })}
+            margin="normal"
+            fullWidth
+          /><br/><br/>
+          <TextField
+            id="name"
+            label="Input predicate"
+            value={this.state.inputPredicate}
+            onChange={(e) => this.update({ inputPredicate: e.target.value })}
+            margin="normal"
+            fullWidth
+          /><br/><br/>
+          <TextField
+            id="name"
+            label="Output vocabulary"
+            value={this.state.outputVocabulary}
+            onChange={(e) => this.update({ outputVocabulary: e.target.value })}
+            margin="normal"
+            fullWidth
+          /><br/><br/>
+          <TextField
+            id="name"
+            label="Output predicate"
+            value={this.state.outputPredicate}
+            onChange={(e) => this.update({ outputPredicate: e.target.value })}
             margin="normal"
             fullWidth
           /><br/><br/>
@@ -87,22 +112,6 @@ class Transformers extends Component {
             value={this.state.query}
             onChange={(e) => this.update({ query: e.target.value })}
             multiline
-            fullWidth
-          /><br/><br/>
-          <TextField
-            id="name"
-            label="Input title"
-            value={this.state.inputTitle}
-            onChange={(e) => this.update({ inputTitle: e.target.value })}
-            margin="normal"
-            fullWidth
-          /><br/><br/>
-          <TextField
-            id="name"
-            label="Output title"
-            value={this.state.outputTitle}
-            onChange={(e) => this.update({ outputTitle: e.target.value })}
-            margin="normal"
             fullWidth
           /><br/><br/>
           <TextField

@@ -1,4 +1,4 @@
-const getTransformerMarkup = ({ id, title, query, descriptor, inputTitle, outputTitle }) => 
+const getTransformerMarkup = ({ id, inputVocabulary, inputPredicate, outputVocabulary, outputPredicate, query, descriptor }) => 
 `@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 
@@ -8,14 +8,14 @@ const getTransformerMarkup = ({ id, title, query, descriptor, inputTitle, output
 @prefix configuration-vocabulary:  <http://linked.opendata.cz/vocabulary/ldvm/transformer/${id}/configuration/> .
 
 transformer:template a ldvm:TransformerTemplate ;
-  dcterms:title "${title}"@en;
+  dcterms:title "${inputVocabulary} ${inputPredicate} to ${outputVocabulary} ${outputPredicate}"@en;
   ldvm:componentConfigurationTemplate transformer:defaultConfiguration ;
   ldvm:inputTemplate transformer:input ;
   ldvm:outputTemplate transformer:output ;
   ldvm:feature transformer:feature .
   
 configuration-vocabulary:Configuration a rdfs:Class ;
-  rdfs:label "Class of configurations of ${title}"@en;
+  rdfs:label "Class of configurations of ${inputVocabulary} ${inputPredicate} to ${outputVocabulary} ${outputPredicate}"@en;
   rdfs:subClassOf ldvm:ComponentConfiguration .
   
 transformer:defaultConfiguration a configuration-vocabulary:Configuration ;
@@ -40,13 +40,13 @@ ${query}
   """ .
 
 transformer:input a ldvm:InputDataPortTemplate ;
-  dcterms:title "${inputTitle}" .
+  dcterms:title "Triples with ${inputVocabulary} ${inputPredicate} predicate" .
   
 transformer:output a ldvm:OutputDataPortTemplate ;
-  dcterms:title "${outputTitle}" .
+  dcterms:title "Representation of objects of the input triples expressed as ${outputVocabulary} triples" .
   
 transformer:feature a ldvm:MandatoryFeature ;
-  dcterms:title "Transforms ${title}" ;
+  dcterms:title "Transforms ${inputVocabulary} ${inputPredicate} to ${outputVocabulary} ${outputPredicate}" ;
   ldvm:descriptor transformer:descriptor .
   
 transformer:descriptor a ldvm:Descriptor ;
