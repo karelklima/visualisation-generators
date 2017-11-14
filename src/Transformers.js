@@ -15,25 +15,25 @@ const transformerDefaults = {
   id: 'dce-to-dcterms-title',
   title: 'Dublin Core elements title to Dublin Core terms title',
   query: `PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-  PREFIX dce: <http://purl.org/dc/elements/1.1/>
-  PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dce: <http://purl.org/dc/elements/1.1/>
+PREFIX dct: <http://purl.org/dc/terms/>
 
-  DELETE {
-    ?s dce:title ?title .
-  }
-  INSERT {
-    ?s dct:title ?title .
-  } 
-  WHERE {
-    ?s dce:title ?title .
-  }`,
+DELETE {
+  ?s dce:title ?title .
+}
+INSERT {
+  ?s dct:title ?title .
+} 
+WHERE {
+  ?s dce:title ?title .
+}`,
   descriptor: `PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-  PREFIX dct: <http://purl.org/dc/terms/>
-  PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX time: <http://www.w3.org/2006/time#>
 
-  ASK {
-    ?s dct:issued ?dateTime .
-  }`,
+ASK {
+  ?s dct:issued ?dateTime .
+}`,
   inputTitle: 'Triples with Dublin Core elements title predicate',
   outputTitle: 'Representation of objects of the input triples expressed as Dublin Core terms triples'
 }
