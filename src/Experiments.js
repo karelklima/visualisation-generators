@@ -16,8 +16,8 @@ class Experiments extends Component {
     super();
     this.state = {
       id: '1',
-      urls: 'https://linked.opendata.cz/ldcp/resource/dataset/nkod-dcterms/template',
-      experimentMarkup: getExperimentMarkup('1', 'https://linked.opendata.cz/ldcp/resource/dataset/nkod-dcterms/template')
+      urls: 'https://discovery.linkedpipes.com/resource/dataset/nkod-dcterms/template',
+      experimentMarkup: getExperimentMarkup('1', 'https://discovery.linkedpipes.com/resource/dataset/nkod-dcterms/template')
     };
   }
 

@@ -2,57 +2,57 @@ const getTransformerMarkup = ({ id, inputVocabulary, inputPredicate, outputVocab
 `@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 
-@prefix ldcp:       <https://linked.opendata.cz/vocabulary/ldcp/> .
+@prefix lpd:       <https://discovery.linkedpipes.com/vocabulary/> .
 
-@prefix transformer:  <https://linked.opendata.cz/ldcp/resource/transformer/${id}/> .
-@prefix configuration-vocabulary:  <https://linked.opendata.cz/ldcp/vocabulary/transformer/${id}/configuration/> .
+@prefix transformer:  <https://discovery.linkedpipes.com/resource/transformer/${id}/> .
+@prefix configuration-vocabulary:  <https://discovery.linkedpipes.com/vocabulary/transformer/${id}/configuration/> .
 
-transformer:template a ldcp:TransformerTemplate ;
+transformer:template a lpd:TransformerTemplate ;
   dcterms:title "${inputVocabulary} ${inputPredicate} to ${outputVocabulary} ${outputPredicate}"@en;
-  ldcp:componentConfigurationTemplate transformer:defaultConfiguration ;
-  ldcp:inputTemplate transformer:input ;
-  ldcp:outputTemplate transformer:output ;
-  ldcp:feature transformer:feature .
+  lpd:componentConfigurationTemplate transformer:defaultConfiguration ;
+  lpd:inputTemplate transformer:input ;
+  lpd:outputTemplate transformer:output ;
+  lpd:feature transformer:feature .
   
 configuration-vocabulary:Configuration a rdfs:Class ;
   rdfs:label "Class of configurations of ${inputVocabulary} ${inputPredicate} to ${outputVocabulary} ${outputPredicate}"@en;
-  rdfs:subClassOf ldcp:ComponentConfiguration .
+  rdfs:subClassOf lpd:ComponentConfiguration .
   
 transformer:defaultConfiguration a configuration-vocabulary:Configuration ;
   dcterms:title "Default configuration" ;
-  ldcp:query  """
+  lpd:query  """
 ${query}
   """ ;
-  ldcp:configurationQuery """
+  lpd:configurationQuery """
     PREFIX dcterms: <http://purl.org/dc/terms/>
-    PREFIX ldcp: <https://linked.opendata.cz/vocabulary/ldcp/>
-    PREFIX configuration-vocabulary: <https://linked.opendata.cz/ldcp/vocabulary/transformer/${id}/configuration/>
+    PREFIX lpd: <https://discovery.linkedpipes.com/vocabulary/>
+    PREFIX configuration-vocabulary: <https://discovery.linkedpipes.com/vocabulary/transformer/${id}/configuration/>
     
     CONSTRUCT {
       ?config a configuration-vocabulary:Configuration ;
-        ldcp:query ?query ;
+        lpd:query ?query ;
         dcterms:title ?title .
     } WHERE {
       ?config a configuration-vocabulary:Configuration .
-      OPTIONAL { ?config ldcp:query ?query . }
+      OPTIONAL { ?config lpd:query ?query . }
       OPTIONAL { ?config dcterms:title ?title . }
     }
   """ .
 
-transformer:input a ldcp:InputDataPortTemplate ;
+transformer:input a lpd:InputDataPortTemplate ;
   dcterms:title "Triples with ${inputVocabulary} ${inputPredicate} predicate" .
   
-transformer:output a ldcp:OutputDataPortTemplate ;
+transformer:output a lpd:OutputDataPortTemplate ;
   dcterms:title "Representation of objects of the input triples expressed as ${outputVocabulary} triples" .
   
-transformer:feature a ldcp:MandatoryFeature ;
+transformer:feature a lpd:MandatoryFeature ;
   dcterms:title "Transforms ${inputVocabulary} ${inputPredicate} to ${outputVocabulary} ${outputPredicate}" ;
-  ldcp:descriptor transformer:descriptor .
+  lpd:descriptor transformer:descriptor .
   
-transformer:descriptor a ldcp:Descriptor ;
-  ldcp:query """
+transformer:descriptor a lpd:Descriptor ;
+  lpd:query """
 ${descriptor}
   """ ;
-  ldcp:appliesTo transformer:input .`;
+  lpd:appliesTo transformer:input .`;
 
 export default getTransformerMarkup;
