@@ -3,13 +3,13 @@ const getExperimentMarkup = (id, urls) => {
 
   return `@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 
-<https://linked.opendata.cz/ldcp/resource/experiment/${id}/config> a <https://linked.opendata.cz/ldcp/resource/discovery/input> ;
-    <https://linked.opendata.cz/ldcp/vocabulary/experiment/hasTemplate> 
+<https://linked.opendata.cz/ldcp/resource/discovery/${id}/config> a <https://linked.opendata.cz/ldcp/resource/discovery/input> ;
+    <https://linked.opendata.cz/ldcp/vocabulary/discovery/hasTemplate> 
 ${urls}
     .
 
-<https://linked.opendata.cz/ldcp/resource/experiment/${id}/config> 
-    <https://linked.opendata.cz/ldcp/vocabulary/experiment/hasTemplate> 
+<https://linked.opendata.cz/ldcp/resource/discovery/${id}/config> 
+    <https://linked.opendata.cz/ldcp/vocabulary/discovery/hasTemplate> 
       <https://linked.opendata.cz/ldcp/resource/lod/templates/http---202.45.139.84-10035-catalogs-fao-repositories-agrovoc> , 
       <https://linked.opendata.cz/ldcp/resource/lod/templates/http---apps.morelab.deusto.es-labman-sparql> , 
       <https://linked.opendata.cz/ldcp/resource/lod/templates/http---commons.dbpedia.org-sparql> , 
