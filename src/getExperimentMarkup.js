@@ -3,7 +3,7 @@ const getExperimentMarkup = (id, urls) => {
 
   return `@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 
-<https://linked.opendata.cz/ldcp/resource/discovery/${id}/config> a <https://linked.opendata.cz/ldcp/resource/discovery/input> ;
+<https://linked.opendata.cz/ldcp/resource/discovery/${id}/config> a <https://linked.opendata.cz/ldcp/vocabulary/discovery/Input> ;
     <https://linked.opendata.cz/ldcp/vocabulary/discovery/hasTemplate> 
 ${urls}
     .
