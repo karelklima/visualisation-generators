@@ -4,8 +4,8 @@ const getTransformerMarkup = ({ id, inputVocabulary, inputPredicate, outputVocab
 
 @prefix ldvm:       <http://linked.opendata.cz/ontology/ldvm/> .
 
-@prefix transformer:  <http://linked.opendata.cz/ldcp/resource/ldvm/transformer/${id}/> .
-@prefix configuration-vocabulary:  <http://linked.opendata.cz/vocabulary/ldvm/transformer/${id}/configuration/> .
+@prefix transformer:  <https://linked.opendata.cz/ldcp/resource/ldvm/transformer/${id}/> .
+@prefix configuration-vocabulary:  <https://linked.opendata.cz/vocabulary/ldvm/transformer/${id}/configuration/> .
 
 transformer:template a ldvm:TransformerTemplate ;
   dcterms:title "${inputVocabulary} ${inputPredicate} to ${outputVocabulary} ${outputPredicate}"@en;
